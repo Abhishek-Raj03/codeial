@@ -2,13 +2,13 @@ const User=require('../models/user');
 
 //render profile
 module.exports.profile=function(req,res){
-    return res.render('user',{
+    return res.render('user_profile',{
         title:'Users'
     })
 }
 //render post
 module.exports.post=function(req,res){
-    return res.render('user',{
+    return res.render('user_profile',{
         title:'Users'
     })
 }
@@ -54,7 +54,3 @@ module.exports.create=function(req,res){
 module.exports.createSession=function(req,res){
    //TODO Later
 }
-
-
-
-
