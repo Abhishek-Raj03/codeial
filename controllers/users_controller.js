@@ -8,11 +8,11 @@ module.exports.profile=function(req,res){
     })
 }
 //render post
-module.exports.post=function(req,res){
-    return res.render('user_profile',{
-        title:'Users'
-    })
-}
+// module.exports.post=function(req,res){
+//     return res.render('user_profile',{
+//         title:'Users'
+//     })
+// }
 //render the signup page
 module.exports.signUp=function(req,res){
     if(req.isAuthenticated()){

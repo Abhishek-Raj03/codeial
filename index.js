@@ -5,6 +5,9 @@
 
 const express=require('express');
 const cookieParser=require('cookie-parser');
+// const bootstrap=require('bootstrap');
+// import 'bootstrap/dist/css/bootstrap.min.css'
+// const bootstrap=require('bootstrap/dist/css/bootstrap.min.css')
 
 const { urlencoded } = require('express');
 
@@ -26,6 +29,18 @@ const passportLocal=require('./config/passport-local-strategy');
 //npm install connect-mongo
 const MongoStore=require('connect-mongo');
 
+// const connect=require('connect');
+
+//npm install node-sass-middleware
+const sassMiddleware=require('node-sass-middleware');
+
+app.use(sassMiddleware({
+    src: './assets/scss',
+    dest: './assets/css',
+    debug: true,
+    outputStyle: 'extended',
+    prefix: '/css' 
+}));
 //use static files
 app.use(express.static('./assets')) 
 

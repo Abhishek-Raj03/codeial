@@ -1,7 +1,66 @@
 <header>
-    page Header
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Navbar</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Dropdown
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link disabled">Disabled</a>
+              </li>
+            </ul>
+           
+            <div class="mx-2">
+                <% if(locals.user){ %>
+                <a href="/users/profile">
+                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal1">
+                        <%= user.name %>
+                      </button>
+                </a>
+            
+                <a href="/users/sign-out">
+                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal1">
+                        signout
+                      </button>
+                </a>
+                <% } else { %>
+                    <a href="/users/sign-up">
+                        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal1">
+                            signup
+                          </button>
+                    </a>
+                
+                    <a href="/users/sign-in">
+                        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal1">
+                            signin
+                          </button>
+                    </a>
+                    <% } %>
+            </div>
+          </div>
+        </div>
+      </nav>
 
-    <ul>
+    <!-- <ul>
         <% if(locals.user){ %>
             <li>
                 <a href="/users/profile"><%= user.name %></a>
@@ -18,5 +77,5 @@
                 <a href="/users/sign-in">sign-in</a>
             </li>
         <% } %>
-    </ul>
+    </ul> -->
 </header>

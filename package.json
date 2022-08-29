@@ -13,6 +13,7 @@
   "author": "Abhishek Raj",
   "license": "ISC",
   "dependencies": {
+    "bootstrap": "^5.2.0",
     "connect-mongo": "^4.6.0",
     "cookie-parser": "^1.4.6",
     "ejs": "^3.1.8",
@@ -20,6 +21,8 @@
     "express-ejs-layouts": "^2.5.1",
     "express-session": "^1.17.3",
     "mongoose": "^6.5.3",
+    "node-sass": "^7.0.1",
+    "node-sass-middleware": "^1.0.1",
     "passport": "^0.6.0",
     "passport-local": "^1.0.0"
   }
