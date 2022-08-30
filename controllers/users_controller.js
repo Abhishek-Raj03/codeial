@@ -1,5 +1,6 @@
 const passport = require('passport');
 const User=require('../models/user');
+const Post=require('../models/post');
 
 //render profile
 module.exports.profile=function(req,res){
@@ -8,10 +9,21 @@ module.exports.profile=function(req,res){
     })
 }
 //render post
-// module.exports.post=function(req,res){
-//     return res.render('user_profile',{
-//         title:'Users'
-//     })
+// module.exports.posts=function(req,res){
+//    if(req.isAuthenticated()){
+//       Post.create(req.body,function(err,post){
+//         if(err){
+//             console.log('error in posting');
+//             return;
+//         }
+//         return res.redirect('/users/profile');
+//       })
+//    }
+//    else{
+//     console.log('not authenticated');
+//     // alert('please login');
+//     return res.redirect('back');
+//    }
 // }
 //render the signup page
 module.exports.signUp=function(req,res){

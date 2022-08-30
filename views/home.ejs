@@ -1,5 +1,27 @@
-
 <link rel="stylesheet" href="/css/user_profile.css">
+
         <h1>Codeial / <%=title %></h1>
        
+<section id="feed-post">
+    <h4>posts</h4>
+    <form action="/posts/create" id="new-post-form" method="post">
+       <textarea name="content" id="" cols="30" rows="3" placeholder="type here.." required></textarea>
+       <!-- <input type="submit" value="post"> -->
+       <button>submit</button>
+    </form>
+    <div id="posts-list-container">
+        <% for(post of posts){ %>
+            <li>
+                <%= post.content %>
+                    <!-- <%= post.user %> -->
+                <%= post.user.name%>
+            </li>
+            
+          <% } %>
+    </div>
+</section>
+
+  
+       
+
         
