@@ -4,12 +4,11 @@
        
 <section id="feed-post">
     <h4>posts</h4>
-
-   <% if(locals.user){ %>
+  <!-- for form visibility restriction only to signed in users -->
+   <% if(locals.user){ %> 
 
     <form action="/posts/create" id="new-post-form" method="post">
        <textarea name="content" id="" cols="30" rows="3" placeholder="type here.." required></textarea>
-       <!-- <input type="submit" value="post"> -->
        <button>submit</button>
     </form>
      <% } %>
@@ -25,6 +24,33 @@
 
                 </small>
             </p>
+            <div class="post-comments">
+              <%  if(locals.user) { %>
+                <form action="/comments/create" method="POST">
+                   <input type="text" name="content" placeholder="comment here..">
+                   <input type="hidden" name="post" value="<%= post._id %>">
+                   <button>Add comment</button>
+                </form>
+                <% } %>
+
+               <div class="post-comments-list">
+                <ul id="post-comments-<%= post._id %>">
+                   <% for(comment of post.comments){ %>
+ 
+                      <p>
+                        <%= comment.content %>
+                        <br>
+                        <small>
+                            <%= comment.user.name %>
+                        </small>
+                      </p>
+
+                  <% } %>
+                </ul>
+               </div>
+
+            </div>
+            
         </li>
             
           <% } %>

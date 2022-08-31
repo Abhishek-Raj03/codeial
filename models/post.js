@@ -5,16 +5,20 @@ const postSchema=new mongoose.Schema({
         type:String,
         required:true
     },
+    //keeping the user id who has commented
     user:{
-        type:mongoose.Schema.Types.ObjectId,
-        // type:ObjectId,
-        ref:'User',
-        // required:true
-    }
-    // abc:{
-    //     type:String,
-    //     required:true
-    // }
+        type:mongoose.Schema.Types.ObjectId, //keeps the ids
+        ref:'User',  //same name as of collection name for reference
+        
+    },
+    //include the array of ids of all comments in this post scema itself
+    comments:[
+        {
+            type:mongoose.Schema.Types.ObjectId,
+            ref:'Comment',   
+        }
+    ]
+   
 },{
     timestamps:true
 })
