@@ -17,8 +17,13 @@ module.exports.create=function(req,res){
 }
 
 module.exports.destroy=function(req,res){
+    console.log(req.user);
     //req.params['id']==req.params.id
      Post.findById(req.params['id'],function(err,post){
+        if(err){
+            console.log('error in finding post');
+            return;
+        }
       // .id means converting the object id into string
         if(post.user==req.user.id){
             post.remove();
