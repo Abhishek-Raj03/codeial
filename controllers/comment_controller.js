@@ -14,7 +14,16 @@ module.exports.create=async function(req,res){
             });
                 //adding comment to the post
                 post.comments.push(comment);
+                
                 post.save();  //whenever update save into database
+                if(req.xhr){
+                    return res.status(200).json({
+                        data:{
+                            comment:comment
+                        },
+                        message:'comment created'
+                    })
+                }
                 req.flash('success','comment published!')
                 res.redirect('/');
     

@@ -1,6 +1,7 @@
 const Post = require('../models/post');
 // const { post } = require('../routes');
 const User=require('../models/user');
+const Comment=require('../models/comment');
 
 // module.exports.home = function (req, res) {
 //     //populate is used to join to other db

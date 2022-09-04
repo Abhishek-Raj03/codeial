@@ -13,7 +13,8 @@
                     console.log(data);
                    let newPost=newPostDom(data.data.post);
                    $('#posts-list-container>ul').prepend(newPost);
-                   deletePost($(' .delete-post-button',newPost));
+                    deletePost($(' .delete-post-button',newPost));
+                    // deletePost($('.delete-post-button'));
                 },
                 error:function(err){
                     console.log(err.responseText);
@@ -67,7 +68,7 @@
             type:'get',
             url:$(deleteLink).prop('href'),
             success:function(data){
-              $(`post-${data.data.post._id}`).remove()
+              $(`#post-${data.data.post_id}`).remove()
             },
             error:function(error){
                 console.log(error.responseText);

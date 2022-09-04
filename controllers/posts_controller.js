@@ -9,10 +9,10 @@ module.exports.create= async function(req,res){
         });
         if(req.xhr){
             return res.status(200).json({
-                'data':{
-                    'post':post
+                data:{
+                    post:post
                 },
-                'message':'post created!'
+                message:'post created!'
             })
         }
         req.flash('success','post published!');
@@ -30,19 +30,19 @@ module.exports.destroy=async function(req,res){
     try{
         //req.params['id']==req.params.id
     let post=await Post.findById(req.params['id']);
-    if(req.xhr){
-        return res.status(200).json({
-            data:{
-                post_id:req.params.id
-            },
-            message:"post removed!"
-        })
-     }
+    
     // .id means converting the object id into string
       if(post.user==req.user.id){
           post.remove();
          await Comment.deleteMany({post:req.params.id});
-         
+         if(req.xhr){
+            return res.status(200).json({
+                data:{
+                    post_id:req.params.id
+                },
+                message:"post removed!"
+            })
+         }
          req.flash('success','post deleted');
          return res.redirect('back');
       }
