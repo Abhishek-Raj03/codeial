@@ -28,6 +28,7 @@ const User=require('../models/user');
 module.exports.home=async function(req,res){
     try{
           let posts=await Post.find({}).populate('user')
+          .sort('-createdAt')
           .populate({
             path:'comments',
             populate:{
@@ -41,7 +42,8 @@ module.exports.home=async function(req,res){
             all_users:users
         });
     } catch(err) {
-        console.log(`Error: ${err}`);
+        // console.log(`Error: ${err}`);
+        req.flash('error',err);
         return;
     }
 }

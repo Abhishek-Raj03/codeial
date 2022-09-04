@@ -15,13 +15,15 @@ module.exports.create=async function(req,res){
                 //adding comment to the post
                 post.comments.push(comment);
                 post.save();  //whenever update save into database
+                req.flash('success','comment published!')
                 res.redirect('/');
     
       }
 
     } catch(err) {
-       console.log(`Error: ${err}`);
-       return;
+    //    console.log(`Error: ${err}`);
+          req.flash('error',err);
+          return res.redirect('back');
     }
     
 }
@@ -36,16 +38,18 @@ module.exports.destroy=async function(req,res){
 
             //deleting post->commentsArray->commentId
            let post= await Post.findByIdAndUpdate(postId,{$pull:{comments:req.params.id}});
+           req.flash('success','comment deleted successfully!')
            return res.redirect('back');
            
         }
         else{
-            console.log('Not found!');
+            req.flash('error','cannot delete comment!')
             return res.redirect('back');
         }
     } catch(err) {
-        console.log(`Error: ${err}`);
-        return;
+        // console.log(`Error: ${err}`);
+        req.flash('error',err);
+          return res.redirect('back');
     }
       
 

@@ -14,10 +14,12 @@ module.exports.profile=function(req,res){
 module.exports.update=function(req,res){
     if(req.user.id==req.params.id){
         User.findByIdAndUpdate(req.params.id,req.body,function(err,user){
+            req.flash('success','updated!')
             return res.redirect('back');
         })
     }
     else{
+        req.flash('error',err)
         return res.status(401).send('unauthorized');
     }
 }
@@ -58,6 +60,7 @@ module.exports.signIn=function(req,res){
 }
 //get the signup data
 module.exports.create=function(req,res){
+    console.log(req.body);
    if(req.body.password!=req.body.confirm_password){
     return res.redirect('back');
    }
@@ -72,10 +75,12 @@ module.exports.create=function(req,res){
                 console.log('error in creating user in signup');
                 return;
               }
+              req.flash('success','user created successfully!');
               return res.redirect('/users/sign-in');
         })
       }
       else{
+        req.flash('error','error in creating user!');
           return res.redirect('back');
 
       }
@@ -84,8 +89,8 @@ module.exports.create=function(req,res){
 }
 //signin and create a session for user data
 module.exports.createSession=function(req,res){
-
-   return res.redirect('/users/profile');
+   req.flash('success','logged in successfully!'); //fetching flash from request
+   return res.redirect('/');
 }
 
 //signout
@@ -94,6 +99,8 @@ module.exports.destroySession=function(req,res){
         if(err){
             return next(err);
         }
+        req.flash('success','logged out successfully!'); 
+        return res.redirect('/');
     });
-    return res.redirect('/');
+  
 }
