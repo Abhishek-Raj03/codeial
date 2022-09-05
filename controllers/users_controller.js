@@ -1,6 +1,9 @@
 const passport = require('passport');
 const User=require('../models/user');
 const Post=require('../models/post');
+const { findById } = require('../models/user');
+const fs=require('fs'); //file system
+const path=require('path');
 
 //render profile
 module.exports.profile=function(req,res){
@@ -11,17 +14,48 @@ module.exports.profile=function(req,res){
         })
     })
 }
-module.exports.update=function(req,res){
+module.exports.update=async function(req,res){
+    // if(req.user.id==req.params.id){
+    //     User.findByIdAndUpdate(req.params.id,req.body,function(err,user){
+    //         req.flash('success','updated!')
+    //         return res.redirect('back');
+    //     })
+    // }
+    // else{
+    //     req.flash('error',err)
+    //     return res.status(401).send('unauthorized');
+    // }
     if(req.user.id==req.params.id){
-        User.findByIdAndUpdate(req.params.id,req.body,function(err,user){
-            req.flash('success','updated!')
-            return res.redirect('back');
-        })
+        try{
+            let user=await User.findById(req.params.id);
+            User.uploadedAvatar(req,res,function(err){
+                if(err){
+                    console.log('Error in uploading avatar: ',err);
+                }
+                user.name=req.body.name;
+                user.email=req.body.email;
+                console.log(req.file);
+                if(req.file){
+                    if(user.avatar && fs.existsSync(path.join(__dirname,'..',user.avatar))){ 
+                        //this needs fs and path
+                       fs.unlinkSync(path.join(__dirname,'..',user.avatar));
+                    }
+                     // this is saving the path of uploaded file into the avatar field in the user
+                    user.avatar=User.avatarPath +'/'+ req.file.filename; //here 'avatar' is from db
+                }
+                user.save();
+                return res.redirect('back');
+            })
+        }catch(err){
+        req.flash('error',err);
+        return res.redirect('back');
+        }
     }
     else{
         req.flash('error',err)
         return res.status(401).send('unauthorized');
     }
+
 }
 //render post
 // module.exports.posts=function(req,res){
