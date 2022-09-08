@@ -1,11 +1,14 @@
 //for uploading files multer is used
 //for flash messages flash is used
 //npm install connect-mongo
+//npm install cookie-parser
 //npm install passport
 //npm install passport-local
 //npm install express-session
 //npm install passport-jwt
 //npm install json web token
+//npm install passport-google-oauth
+//npm install crypto (crypto is used to generate random password)
 
 const express=require('express');
 const cookieParser=require('cookie-parser');
@@ -30,6 +33,8 @@ const passport=require('passport');
 const passportLocal=require('./config/passport-local-strategy');
 //npm install passport-jwt
 const passportJWT=require('./config/passport-jwt-strategy');
+//npm install passport-google-oauth
+const passportGoogle=require('./config/passport-google-oauth2-strategy')
 //npm install connect-mongo
 const MongoStore=require('connect-mongo');
 
