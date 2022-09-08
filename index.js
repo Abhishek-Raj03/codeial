@@ -1,13 +1,14 @@
+//for uploading files multer is used
+//for flash messages flash is used
 //npm install connect-mongo
 //npm install passport
 //npm install passport-local
 //npm install express-session
+//npm install passport-jwt
+//npm install json web token
 
 const express=require('express');
 const cookieParser=require('cookie-parser');
-// const bootstrap=require('bootstrap');
-// import 'bootstrap/dist/css/bootstrap.min.css'
-// const bootstrap=require('bootstrap/dist/css/bootstrap.min.css')
 
 const { urlencoded } = require('express');
 
@@ -23,9 +24,12 @@ const User=require('./models/user');
 //used for session cookie
 //npm install express-session
 const session=require('express-session');
+//npm install passport
 const passport=require('passport');
+//npm install passport-local
 const passportLocal=require('./config/passport-local-strategy');
-
+//npm install passport-jwt
+const passportJWT=require('./config/passport-jwt-strategy');
 //npm install connect-mongo
 const MongoStore=require('connect-mongo');
 
