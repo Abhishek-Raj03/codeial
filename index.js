@@ -26,7 +26,7 @@ const User=require('./models/user');
 
 //used for session cookie
 //npm install express-session
-const session=require('express-session');
+const session=require('express-session'); //used for storing session cookie
 //npm install passport
 const passport=require('passport');
 //npm install passport-local
@@ -36,7 +36,7 @@ const passportJWT=require('./config/passport-jwt-strategy');
 //npm install passport-google-oauth
 const passportGoogle=require('./config/passport-google-oauth2-strategy')
 //npm install connect-mongo
-const MongoStore=require('connect-mongo');
+const MongoStore=require('connect-mongo'); //used to store session-cookie in db
 
 // const connect=require('connect');
 
@@ -76,6 +76,7 @@ app.use(cookieParser());
 app.set('view engine','ejs');
 app.set('views','./views'); 
 
+//mongo store is used to store session cookie in db 
 app.use(session({
     name:'codiel',
     //TODO change the secret to encrepted before deployment
@@ -83,7 +84,7 @@ app.use(session({
     saveUninitialized:false,
     resave:false,
     cookie:{
-        maxAge:(1000*60*100*10000)
+        maxAge:(1000*60*100*24)
     },
     store:MongoStore.create( 
         {

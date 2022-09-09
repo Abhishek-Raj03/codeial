@@ -9,7 +9,8 @@ const User = require('../models/user');
 passport.use(new googleStrategy({
         clientID: "791976790785-qmjnssqs8bmv59u5uu87oien89ghpnf2.apps.googleusercontent.com",
         clientSecret: "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",
-        callbackURL: "http://localhost:8000/users/auth/google/callback"
+        // google gives back information of user into this callback url
+        callbackURL: "http://localhost:8000/users/auth/google/callback" 
   },
     
      function (accessToken, refreshToken, profile, done) { //oauth also uses accesToken as JWT,refreshToken:when accessToken expires
