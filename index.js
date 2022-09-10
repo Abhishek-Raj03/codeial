@@ -9,6 +9,7 @@
 //npm install json web token
 //npm install passport-google-oauth
 //npm install crypto (crypto is used to generate random password)
+//npm install nodemailer (to send mail to users regarding posts,comments,likes etc)
 
 const express=require('express');
 const cookieParser=require('cookie-parser');
