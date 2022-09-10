@@ -10,7 +10,8 @@ let transporter=nodemailer.createTransport({
     secure:false,
     auth:{
         user: 'testdevelopment25@gmail.com',
-        pass: 'lyctkzmprtezfrcw'
+        pass: process.env.NODEMAILER_AUTH_PASS
+        
     }
 })
 
