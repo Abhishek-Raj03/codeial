@@ -10,7 +10,8 @@ module.exports.profile=function(req,res){
     User.findById(req.params.id,function(err,user){
         return res.render('user_profile',{
             title:'Users',
-            profile_user:user
+            profile_user:user,
+            // user:user
         })
     })
 }

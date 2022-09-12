@@ -60,19 +60,52 @@ module.exports.otp=function(req,res){
         }
         if(otp){
            if(otp.content==req.body.otp){
-            Otp.deleteOne({},function(err){
-                console.log('Error in deleting');
-                return;
-            })
+            // Otp.deleteOne({},function(err){
+            //     console.log('Error in deleting');
+            //     return;
+            // })
             return res.render('forgot_password/create.ejs',{
                 title:'Credentials'
             })
            } 
+           else{
+            Otp.deleteOne({},function(err){
+                return res.render('forgot_password/emailForm',{
+                    title:'forget!'
+                });
+            })
+           }
         }
         else{
             return res.json('401',{
                 message:'OTP NOT FOUND'
             })
         }
+    })
+}
+module.exports.createPassword=function(req,res){
+    Otp.findOne({},function(err,otp){
+        if(err){
+            console.log('error in finding OTP in db',err);
+            return;
+        }
+        let email=otp.email;
+        Otp.deleteOne({},function(err){
+                console.log('Error in deleting');
+                return;
+            })
+        User.findOne({email:email},function(err,user){
+            if(err){
+                console.log('Error in finding user in forgot password controller',err);
+                return;
+            }
+            user.password=req.body.password;
+            user.save();
+            return res.render('user_profile',{
+                title:'Users',
+                profile_user:user,
+                user:user
+            })
+        })
     })
 }

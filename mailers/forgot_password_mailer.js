@@ -23,7 +23,7 @@ exports.reset=(email)=>{
 
     let htmlString=renderTemplate1(random);
     // let htmlString='hii'
-    Otp.create({content:random},function(err,number){
+    Otp.create({content:random,email:email},function(err,number){
         if(err){
             console.log('Error in OTP database');
             return;
