@@ -1,11 +1,13 @@
 const nodeMailer=require('../config/nodemailer');
 const path=require('path');
 const ejs=require('ejs');
+const Otp=require('../models/otp');
+// let random=0;
 
 //send HTML to the relative file in views ; data is which data(variable) in page to be rendered
 let renderTemplate1=(random)=>{
     let mailHTML;
-    console.log(random);
+    // console.log(random);
 
     ejs.renderFile(path.join(__dirname,'../views/mailers/forgot_password/new_otp.ejs'),{random:random},function(err,template){
         if(err){
@@ -17,10 +19,17 @@ let renderTemplate1=(random)=>{
     return mailHTML;
 }
 exports.reset=(email)=>{
-    let random=Math.floor((Math.random()*10000)+1);
+   let random=Math.floor((Math.random()*10000)+1);
 
     let htmlString=renderTemplate1(random);
     // let htmlString='hii'
+    Otp.create({content:random},function(err,number){
+        if(err){
+            console.log('Error in OTP database');
+            return;
+        }
+
+    })
 
     nodeMailer.transporter.sendMail({
         
@@ -38,3 +47,5 @@ exports.reset=(email)=>{
         return;
     })
 }
+// module.exports={ random:random}
+// exports.random=random;

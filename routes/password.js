@@ -5,6 +5,6 @@ const passwordController=require('../controllers/forgot_password_controller');
 router.get('/',passwordController.emailForm)
 
 router.post('/verify',passwordController.verify);
-// router.post('/otp',passwordController.otp);
+router.post('/otp',passwordController.otp);
 
 module.exports=router; 
