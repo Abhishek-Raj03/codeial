@@ -1,5 +1,6 @@
 //for uploading files multer is used
 //for flash messages flash is used
+//npm install mongoose
 //npm install connect-mongo
 //npm install cookie-parser
 //npm install passport
@@ -10,7 +11,8 @@
 //npm install passport-google-oauth
 //npm install crypto (crypto is used to generate random password)
 //npm install nodemailer (to send mail to users regarding posts,comments,likes etc)
-//npm install kue (for delayed jobs)
+//npm install kue (for delayed jobs); redish is needed to run this
+//npm install dotenv (for environment variable)
 
 const express=require('express');
 const cookieParser=require('cookie-parser');

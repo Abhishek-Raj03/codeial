@@ -3,7 +3,7 @@ const nodeMailer=require('../config/nodemailer');
 exports.newComment=(comment)=>{
     
     let htmlString=nodeMailer.renderTemplate({comment:comment},'/comments/new_comment.ejs');
-    // let htmlString='<h1>hee</h1>'
+    // let htmlString='<h1>hii</h1>'
     nodeMailer.transporter.sendMail({
         
         from:'testdeveloper25@gmail.com',
