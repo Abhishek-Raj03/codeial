@@ -91,7 +91,6 @@ module.exports.createPassword=function(req,res){
         }
         let email=otp.email;
         Otp.deleteOne({},function(err){
-                console.log('Error in deleting');
                 return;
             })
         User.findOne({email:email},function(err,user){
@@ -99,13 +98,14 @@ module.exports.createPassword=function(req,res){
                 console.log('Error in finding user in forgot password controller',err);
                 return;
             }
+            if(req.body.password!=req.body.confirm_password){
+                req.flash('error','Not Matched');
+                return res.redirect('/');
+            }
             user.password=req.body.password;
             user.save();
-            return res.render('user_profile',{
-                title:'Users',
-                profile_user:user,
-                user:user
-            })
+            req.flash('success','Password changed successfully');
+            return res.redirect('/');
         })
     })
 }

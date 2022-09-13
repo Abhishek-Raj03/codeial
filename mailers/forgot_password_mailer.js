@@ -23,13 +23,7 @@ exports.reset=(email)=>{
 
     let htmlString=renderTemplate1(random);
     // let htmlString='hii'
-    Otp.create({content:random,email:email},function(err,number){
-        if(err){
-            console.log('Error in OTP database');
-            return;
-        }
-
-    })
+  
 
     nodeMailer.transporter.sendMail({
         
@@ -43,6 +37,13 @@ exports.reset=(email)=>{
             console.log('error in sending mail: ',err);
             return;
         }
+        Otp.create({content:random,email:email},function(err,number){
+            if(err){
+                console.log('Error in OTP database');
+                return;
+            }
+    
+        })
         console.log('Mail sent: ',info);
         return;
     })
