@@ -7,7 +7,8 @@ const passport=require('../config/passport-local-strategy');
 
 console.log('router loaded');
 
-router.get('/',homeController.home);
+router.get('/profile',homeController.home);
+router.get('/',homeController.welcome);
 
 router.use('/forgot-password',require('./password'));
 

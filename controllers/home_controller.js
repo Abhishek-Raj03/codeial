@@ -25,6 +25,11 @@ const Comment=require('../models/comment');
        
 //     })
 // }
+module.exports.welcome=function(req,res){
+    return res.render('welcome',{
+        title:'welcome'
+    });
+}
 
 module.exports.home=async function(req,res){
     try{

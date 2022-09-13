@@ -78,7 +78,7 @@ module.exports.update=async function(req,res){
 //render the signup page
 module.exports.signUp=function(req,res){
     if(req.isAuthenticated()){
-       return res.redirect('/users/profile');
+       return res.redirect('/profile');
     }
     return res.render('user_sign_up',{
         title:'Codeial | signup'
@@ -87,7 +87,7 @@ module.exports.signUp=function(req,res){
 //render the signin page
 module.exports.signIn=function(req,res){
     if(req.isAuthenticated()){
-       return res.redirect('/users/profile');
+       return res.redirect('/profile');
     }
     return res.render('user_sign_in',{
         title:'Codeial | signin'
@@ -111,7 +111,7 @@ module.exports.create=function(req,res){
                 return;
               }
               req.flash('success','user created successfully!');
-              return res.redirect('/users/sign-in');
+              return res.redirect('/profile');
         })
       }
       else{
@@ -125,7 +125,7 @@ module.exports.create=function(req,res){
 //signin and create a session for user data
 module.exports.createSession=function(req,res){
    req.flash('success','logged in successfully!'); //fetching flash from request
-   return res.redirect('/');
+   return res.redirect('/profile');
 }
 
 //signout

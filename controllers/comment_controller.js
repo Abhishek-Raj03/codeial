@@ -43,7 +43,7 @@ module.exports.create=async function(req,res){
                     })
                 }
                 req.flash('success','comment published!')
-                res.redirect('/');
+                res.redirect('back');
     
       }
 
