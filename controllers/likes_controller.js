@@ -27,7 +27,7 @@ module.exports.toggleLike=async function(req,res){
          likeable.likes.pull(existingLike._id);
          likeable.save();
          existingLike.remove();
-         deleted:true;
+         deleted=true;
        }
        else{
         // else make a new like
@@ -39,7 +39,7 @@ module.exports.toggleLike=async function(req,res){
          likeable.likes.push(newLike._id);
          likeable.save();
        }
-
+      console.log(deleted);
        return res.json(200,{
          message:'Request Successfull',
          data:{
