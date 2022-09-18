@@ -43,20 +43,14 @@
 
 <script src="/js/home_posts.js"></script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.2/socket.io.js"></script>
 
-<!-- <script src="/js/home_likes.js"></script> -->
-<!-- <script>
-    let deleteLink=$('.delete-post-button');
-    let convertToAjax=function(){
-      $('#posts-list-container>ul>li').each(function(){
-        let self = $(this);
-            let deleteButton = $(' .delete-post-button', self);
-            deletePost(deleteButton);
-      })
-    }
-    
-</script> -->
+<script src="/js/chat_engine.js"></script>
 
-
+<% if(locals.user){ %>
+  <script>
+      new ChatEngine('user-chat-box','<%= locals.user.email %>');
+  </script>
+<% } %>
 
         
