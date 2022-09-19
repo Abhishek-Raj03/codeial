@@ -73,13 +73,14 @@ class ChatEngine{
                     $(' #name',newMessage2).html(data.user_name);
                     $(' #ab',newMessage2).html(data.message);
                     $('#xyz').append(newMessage2);
-                }
+              }
                 else{
                   $(' #date',newMessage1).html(d.toLocaleTimeString());
                   $(' #name',newMessage1).html(data.user_name);
                   $(' #ab',newMessage1).html(data.message);
                     $('#xyz').append(newMessage1);
                 }
+                document.getElementById('xyz').scrollTop=document.getElementById('xyz').scrollHeight;
             
       })
       // for handmade chatbox
