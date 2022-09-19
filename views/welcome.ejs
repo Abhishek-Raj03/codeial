@@ -1,17 +1,23 @@
 
     <link rel="stylesheet" href="/css/welcome.css" />
-      
+      <link rel="stylesheet" href="/css/typing_text.css">
   <body>
-   <div>
-    <form style="width: 28%; margin: auto; background-color: whitesmoke;" action="/users/create" method="post" >
+
+ <div class="container1">
+   <h2 ><span class="auto-type"></span></h2>
+ </div>
+    <!-- <h2 class="container2" ><span class="auto-type"></span></h2> -->
+  
+   <div style=" width: 28%; background-color: whitesmoke; min-height: 62%; margin-left: 38%; margin-top: -33%; display: block;">
+    <form  action="/users/create" method="post" >
         <div class="mb-3">
             <div style="margin-left: 40%; font-weight: bold; font-size: large;">Sign Up</div>
-            <div style="margin-left: 15%;">
+            <div style="margin-left: 20%;">
                 <span>
                     <p>Already have an account? <a href="/users/sign-in">Log In</a> </p>                   
                 </span>
             </div>
-            <div style="margin-left: 10%; margin-bottom: 5px;">
+            <div style="margin-left: 10%; margin-bottom: 5%;">
               <a href="/users/auth/google">
               <button class="btn btn-success" type="button" style="width: 90% ; border-radius: 20px;">
                 <?xml version="1.0" encoding="utf-8"?>
@@ -43,13 +49,23 @@
           <label class="form-check-label" for="exampleCheck1">Check me out</label>
         </div >
         <button type="submit" class="btn btn-primary mb-3 form-control">Sign Up</button>
-        <div style="margin-left: 60%; margin-top: -3%;">
+        <div style="margin-left: 60%;">
         <a href="/forgot-password"> <small> Forgot Password? </small></a>
       </div>
-    <div style="margin-left: 5% ;">
+    <div style="margin-left: 5% ; margin-top: 3%; ">
     <small><p>By clicking Sign up or Continue with Google,you agree to our <a href="">Terms and Conditions</a> and <a href=""> Privacy Statement.</a></p></small>
 </div>
       </form>
+    </div>
 
-   </div>
+      <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+      <script>
+        var typed=new Typed(".auto-type",{
+          strings:["Welcome to Codeial","We are ready to serve you <br>differently","All you need is a digital Push"],
+          typeSpeed:60,
+          backSpeed:20,
+          loop:true
+        })
+      </script>
+
   </body>
