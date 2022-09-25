@@ -56,3 +56,9 @@ module.exports.home=async function(req,res){
         return;
     }
 }
+
+module.exports.contact=function(req,res){
+    return res.render('_contact',{
+        title:'contact us'
+    });
+}

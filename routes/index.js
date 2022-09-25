@@ -9,7 +9,7 @@ console.log('router loaded');
 
 router.get('/profile',homeController.home);
 router.get('/',homeController.welcome);
-
+router.get('/contact',homeController.contact);
 router.use('/forgot-password',require('./password'));
 
 

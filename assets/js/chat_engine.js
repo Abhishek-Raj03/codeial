@@ -42,7 +42,8 @@ class ChatEngine{
             }
       })
       self.socket.on('receive_message',function(data){
-  
+     
+        // for different user or(receiver)
       let newMessage1=$(`<div class="d-flex justify-content-between">
       <p class="small mb-1" id="name" ></p>
       <p class="small mb-1 text-muted" id="date"></p>
@@ -55,6 +56,7 @@ class ChatEngine{
       </div>
     </div>`);
 
+    // for same user or(sender)
     let newMessage2=$(`<div class="d-flex justify-content-between">
     <p class="small mb-1 text-muted" id="date"></p>
     <p class="small mb-1" id="name"></p>
