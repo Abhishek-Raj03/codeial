@@ -1,4 +1,7 @@
 // npm install cors(cross origin resourse sharing)
+const Chat=require('../models/chat');
+const User=require('../models/user');
+
 module.exports.chatSockets=function(socketServer){
     let io=require('socket.io')(socketServer,{cors:{origin:"*"}});
 
@@ -19,6 +22,18 @@ module.exports.chatSockets=function(socketServer){
         
         // detect send_message and broadcast to everyone in the room
         socket.on('send_message',function(data){
+            Chat.create({
+                content:data.message,
+                user:data.user_id
+            },function(err,chat){
+                User.findById(data.user_id,function(err,user){
+                    user.chats.push(chat);
+                    user.save();
+                });
+                // data.chat_id=chat;
+                
+            })
+           
             io.in(data.chatroom).emit('receive_message',data);
 
         })

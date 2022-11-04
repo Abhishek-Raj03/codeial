@@ -2,6 +2,7 @@ const Post = require('../models/post');
 // const { post } = require('../routes');
 const User=require('../models/user');
 const Comment=require('../models/comment');
+const Chat=require('../models/chat');
 
 // module.exports.home = function (req, res) {
 //     //populate is used to join to other db
@@ -44,11 +45,14 @@ module.exports.home=async function(req,res){
                 path:'likes'
             }
         }).populate('likes');
-        let users=await User.find({});
+        let chats=await Chat.find({}).populate('user')
+        let users=await User.find({}).populate('chats')
+        // console.log("cookie is: ",locals.user.id)
         return res.render('home', {
             title: 'Home',
+            chats:chats,
             posts: posts,
-            all_users:users
+            all_users:users,
         });
     } catch(err) {
         // console.log(`Error: ${err}`);

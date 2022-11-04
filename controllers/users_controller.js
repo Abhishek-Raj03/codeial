@@ -1,19 +1,42 @@
 const passport = require('passport');
 const User=require('../models/user');
 const Post=require('../models/post');
+const Chat=require('../models/chat');
 const { findById } = require('../models/user');
 const fs=require('fs'); //file system
 const path=require('path');
+const { localsName } = require('ejs');
+// let chats=Chat.find({}).populate('user')
+let users=User.find({}).populate('chats');
+
 
 //render profile
-module.exports.profile=function(req,res){
-    User.findById(req.params.id,function(err,user){
-        return res.render('user_profile',{
-            title:'Users',
-            profile_user:user,
-            // user:user
-        })
+module.exports.profile=async function(req,res){
+    // User.findById(req.params.id,function(err,user){
+    //     user.populate('chats')
+    //     return res.render('user_profile',{
+    //         title:'Users',
+    //         profile_user:user,
+    //         chats:user.chats,
+            
+    //         // user:user
+    //     })
+    // })
+    try{
+       let user=await User.findById(req.params.id).populate('chats')
+       let chats=await Chat.find({user: [user._id,req.user.id]}).populate('user')
+
+       return res.render('user_profile',{
+        title:'Users',
+        profile_user:user,
+        chats:chats,
+        
+        // user:user
     })
+    }catch(err){
+        req.flash('error',err);
+        return;
+    }
 }
 module.exports.update=async function(req,res){
     // if(req.user.id==req.params.id){

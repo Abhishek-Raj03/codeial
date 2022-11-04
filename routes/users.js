@@ -22,7 +22,7 @@ router.post('/create-session',passport.authenticate(
 //for sign-out
 router.get('/sign-out',usersController.destroySession);
 
-// request of server to google (server request google tomprovide information about this user)
+// request of server to google (server request google to provide information about this user)
 router.get('/auth/google',passport.authenticate('google',{scope:['profile','email']}));
 //request of google to server (means google returns information in this url only)
 router.get('/auth/google/callback',passport.authenticate('google',{failureRedirect:'/users/sign-in'}),usersController.createSession);

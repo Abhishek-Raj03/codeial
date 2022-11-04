@@ -10,7 +10,7 @@ passport.use(new LocalStrategy({
     //creating req for callback function as a first argument
     passReqToCallback:true
 },
-    function (req,email, password, done) {
+    function (req, email, password, done) {
 
 
         //find a user and establish identity

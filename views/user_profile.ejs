@@ -1,4 +1,6 @@
 <link rel="stylesheet" href="/css/user_profile.css">
+<link rel="stylesheet" href="/css/home.css">
+
 
         <h1>Codeial | profile page</h1>
        
@@ -15,6 +17,21 @@
       <!-- show only the profile info -->
       <p><%= profile_user.name %></p>
       <p><%= profile_user.email %></p>
- 
+
+      <div id="home-container">
+        <%- include('_chat_box') -%>
+
+      </div>
+
    <%  } %>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.2/socket.io.js"></script>
+
+<script src="/js/chat_engine.js"></script>
+
+<% if(locals.user){ %>
+  <script>
+      // let Chat=require('../../models/chat');
+      new ChatEngine('user-chat-box','<%= locals.user.email %>','<%= locals.user.name %>','<%= locals.user.id %>');
+  </script>
+<% } %>

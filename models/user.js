@@ -21,7 +21,13 @@ const userSchema=new mongoose.Schema({
     },
     avatar:{
         type:String
-    }
+    },
+    chats:[
+        {
+            type:mongoose.Schema.Types.ObjectId,
+            ref:'Chat', 
+        }
+    ]
 },{
     timestamps:true,
     

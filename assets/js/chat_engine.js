@@ -1,16 +1,20 @@
 class ChatEngine{
-    constructor(chatBoxId,userEmail,userName){
+
+    constructor(chatBoxId,userEmail,userName,userId){
         this.chatBox=$(`#${chatBoxId}`);
         this.userEmail=userEmail;
-        this.name=userName
+        this.name=userName,
+        this.id=userId
 
         this.socket=io.connect('http://localhost:5000');
         if(this.userEmail){
             this.connectionHandler(); 
         }
     }
+
     connectionHandler(){
         let self=this;
+        console.log("-------",self.id);
 
         this.socket.on('connect',function(){
             console.log('connection established using sockets...!');
@@ -29,19 +33,35 @@ class ChatEngine{
 
       });
       $('#button-addon2').click(function(){
+
+        // console.log(req.body);
+        // console.log('submitted')
+        // $.ajax({
+        //   type:'post',
+        //   url:'/chats/create',
+          
+        // })
         // e.preventDefault();
         console.log('button clicked');
         let msg=$('#chat-message-input').val();
+        // Chat.create({
+        //   content:msg,
+        //   user:locals.user._id
+        // })
             if (msg != ''){
                 self.socket.emit('send_message', {
                     message: msg,
                     user_email: self.userEmail,
                     user_name:self.name,
+                    user_id:self.id,
                     chatroom: 'codeial'
                 });
             }
       })
+      // const User=require('../../models/user');
       self.socket.on('receive_message',function(data){
+        // const Chat=require('../../models/chat');
+       
      
         // for different user or(receiver)
       let newMessage1=$(`<div class="d-flex justify-content-between">
@@ -83,6 +103,13 @@ class ChatEngine{
                     $('#xyz').append(newMessage1);
                 }
                 document.getElementById('xyz').scrollTop=document.getElementById('xyz').scrollHeight;
+                // User.find({},function(err,user){
+                //   if(err){
+                //     console.log("error in finding user in chat_engine");
+                //     return;
+                //   }
+                //   user.chats.push(c)
+                // })
             
       })
       // for handmade chatbox

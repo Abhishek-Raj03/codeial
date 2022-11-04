@@ -36,7 +36,8 @@
          
   </section>
 
-       <%- include('_chat_box') -%>
+    <%- include('_chat_box') -%>
+       
 
 </div>   
 <!-- <script src="/js/home_post_comments.js"></script> -->
@@ -49,7 +50,8 @@
 
 <% if(locals.user){ %>
   <script>
-      new ChatEngine('user-chat-box','<%= locals.user.email %>','<%= locals.user.name %>');
+      // let Chat=require('../../models/chat');
+      new ChatEngine('user-chat-box','<%= locals.user.email %>','<%= locals.user.name %>','<%= locals.user._id %>');
   </script>
 <% } %>
 
