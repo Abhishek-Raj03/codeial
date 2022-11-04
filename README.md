@@ -35,15 +35,15 @@ A social Media Web Application where a user can create his/her account and do Po
 
 ## User Home Page
 
-![User Home Page](../../../../D:/vs%20code%20programms/NodeJs/codeial/screenshorts/Screenshot_20221105_012541.png)
+![User Home Page](screenshorts/Screenshot_20221105_012541.png)
 
 ## Profile Page
 
-![Profile Page](../../../../D:/vs%20code%20programms/NodeJs/codeial/screenshorts/Screenshot_20221105_012658.png)
+![Profile Page](screenshorts/Screenshot_20221105_012658.png)
 
 ## Contact Us
 
-![Contact Us](../../../../D:/vs%20code%20programms/NodeJs/codeial/screenshorts/Screenshot_20221105_012848.png)
+![Contact Us](screenshorts/Screenshot_20221105_012848.png)
 
 - Clone this repository and then install dependencies using
 
