@@ -76,7 +76,7 @@ module.exports.otp=function(req,res){
             })
            }
         }
-        else{
+        else{ 
             return res.json('401',{
                 message:'OTP NOT FOUND'
             })

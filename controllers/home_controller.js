@@ -39,11 +39,11 @@ module.exports.home=async function(req,res){
           .populate({
             path:'comments',
             populate:{
-                path:'user',
-            },
-            populate:{
-                path:'likes'
+                path:'user likes',
             }
+            // populate:{
+            //     path:'likes'
+            // }
         }).populate('likes');
         let chats=await Chat.find({}).populate('user')
         let users=await User.find({}).populate('chats')
@@ -52,7 +52,7 @@ module.exports.home=async function(req,res){
             title: 'Home',
             chats:chats,
             posts: posts,
-            all_users:users,
+            all_users:users
         });
     } catch(err) {
         // console.log(`Error: ${err}`);

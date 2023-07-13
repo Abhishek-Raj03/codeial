@@ -12,7 +12,7 @@ passport.use(new googleStrategy({
         clientID: process.env.CLIENT_ID,
         clientSecret: process.env.CLIENT_SECRET,
         // google gives back information of user into this callback url
-        callbackURL: "http://localhost:8000/users/auth/google/callback" 
+        callbackURL: "http://localhost:8000/users/auth/google/callback"
   },
     
      function (accessToken, refreshToken, profile, done) { //oauth also uses accesToken as JWT,refreshToken:when accessToken expires

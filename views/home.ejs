@@ -1,17 +1,21 @@
 <link rel="stylesheet" href="/css/user_profile.css">
 <link rel="stylesheet" href="/css/home.css">
-<h1>Codeial / <%=title %></h1>
+<h1 style="font-weight: 600;"> <img height="80px" width="250px" src="/images/codeial-high-resolution-logo-black-on-transparent-background.png" style="margin: 1%; " > </h1>
+
+
 
 <div id="home-container">
        
-<section id="feed-post">
-    <h4>posts</h4>
-  <!-- for form visibility restriction only to signed in users -->
+<section id="feed-post" style="margin-left: 2%;">
+    
    <% if(locals.user){ %> 
 
-    <form action="/posts/create" id="new-post-form" method="post">
-       <textarea name="content" id="" cols="30" rows="3" placeholder="type here.." required></textarea>
-       <button>submit</button>
+    <form style="margin-left: 5%;" action="/posts/create" id="new-post-form" method="post">
+       <textarea name="content" id="" cols="50" rows="6" placeholder="What's in your mind.." required style="background-color: rgb(248, 248, 198);"></textarea>
+       
+        <!-- <button class="btn btn-success btn-lg" type="button" style="width: 390px;">Post</button> -->
+        <br>
+      <button class="btn btn-success btn-lg" style="width: 390px;">Post</button>
     </form>
      <% } %>
     <div id="posts-list-container">
@@ -27,7 +31,10 @@
   <section id="user-friends">
      <h4>Friends</h4>
     <% for(u of all_users){ %>
-      <p>
+      <p style="font-size: larger;">
+        <!-- <i class="fa-solid fa-user"></i> -->
+        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava6-bg.webp"
+                    alt="avatar 1" style="width: 35px; height: 35px;">
 
         <a href="users/profile/<%= u.id %>"> <%= u.name %> </a>
 
@@ -36,7 +43,6 @@
          
   </section>
 
-    <%- include('_chat_box') -%>
        
 
 </div>   
@@ -51,8 +57,11 @@
 <% if(locals.user){ %>
   <script>
       // let Chat=require('../../models/chat');
+    
+      //  <!-- <%- include('_chat_box') -%> -->
       new ChatEngine('user-chat-box','<%= locals.user.email %>','<%= locals.user.name %>','<%= locals.user._id %>');
   </script>
 <% } %>
+
 
         

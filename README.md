@@ -35,11 +35,12 @@ A social Media Web Application where a user can create his/her account and do Po
 
 ## User Home Page
 
-![User Home Page](screenshorts/Screenshot_20221105_012541.png)
+![User Home Page](screenshorts/home.png)
+
 
 ## Profile Page
 
-![Profile Page](screenshorts/Screenshot_20221105_012658.png)
+![Profile Page](screenshorts/profile.png)
 
 ## Contact Us
 

@@ -22,27 +22,29 @@ module.exports.create=async function(req,res){
                 
                 Comment.findById(comment._id).populate('user')
                 .exec(function(err,comment){
-                console.log(comment.user.email);
+                // console.log("----------------------------------",comment.user.name);
                 // commentsMailer.newComment(comment);
                 let job=queue.create('emails',comment).save(function(err){
                     if(err){
                         console.log(`Error in sending queue: ${err}`);
                         return;
                     }
-                    console.log('Job enqued',job.id);
+                    // console.log('Job enqued',job.id);
                 })
                     
                 })
                 
                 if(req.xhr){
+                req.flash('success','comment published!')
                     return res.status(200).json({
                         data:{
-                            comment:comment
+                            comment:comment,
+                            name: req.user.name
                         },
                         message:'comment created'
                     })
                 }
-                req.flash('success','comment published!')
+    //   console.log("commented----------------------------------------------------",)
                 res.redirect('back');
     
       }
@@ -66,6 +68,14 @@ module.exports.destroy=async function(req,res){
             //deleting post->commentsArray->commentId
            let post= await Post.findByIdAndUpdate(postId,{$pull:{comments:req.params.id}});
            req.flash('success','comment deleted successfully!')
+           if(req.xhr){
+            return res.status(200).json({ // or return res.json(200,{...})
+                data:{
+                    comment_id:req.params['id']
+                },
+                message:"post removed!"
+            })
+         }
            return res.redirect('back');
            
         }

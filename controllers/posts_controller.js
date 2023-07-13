@@ -1,17 +1,21 @@
 const Post=require('../models/post');
 const Comment=require('../models/comment');
 const Like=require('../models/like');
+const User=require('../models/user');
 
 module.exports.create= async function(req,res){
     try{
-       let post= await Post.create({
+         let post=await Post.create({
             content:req.body.content,  //req.body.content is from 'form' in home.ejs
             user:req.user._id
         });
+
+        let name=req.user.name;
         if(req.xhr){
             return res.status(200).json({
                 data:{
-                    post:post
+                    post:post,
+                    name:name
                 },
                 message:'post created!'
             })

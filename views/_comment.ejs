@@ -1,16 +1,23 @@
-<li>
+<li id="comment-<%= comment._id %>">
 
     <p>
-      <% if(locals.user && locals.user.id==comment.user.id){ %>
-        <small>
-          <a href="/comments/destroy/<%= comment.id %>"> delete com </a>
-        </small>
-     <% } %>
+  <h6>
+    <%= comment.content %>
+  </h6>
 
-      <%= comment.content %>
-      <br>
-      <small>
-          <%= comment.user.name %>
+      <small style="margin: 0 0 5% 15%;">
+        <i class="fa-regular fa-user"></i>
+        <i>
+          (<%= comment.user.name %>)
+        </i>
       </small>
+      <% if(locals.user && locals.user.id==comment.user._id){ %>
+        <div style="margin-left: 5%; margin-top: -5%; display: inline-block;">
+      <small>
+          <a class="delete-comment-button" href="/comments/destroy/<%= comment.id %>" >  <i style="color: brown;" class="fa-solid fa-circle-minus"></i> </a>
+        </small>
+    </div>
+     
+          <% } %>
     </p>
   </li>

@@ -1,11 +1,12 @@
 <div class="container my-4 ">
        
     <h2> Contact Us </h2>
+    <form action="https://formspree.io/f/xgebanyl" method="POST" >
     <div class="mb-3">
       <label for="exampleFormControlInput1" class="form-label">Email address</label>
-      <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+      <input type="email" class="form-control" name="email" id="exampleFormControlInput1" placeholder="name@example.com">
     </div>
-    <select class="form-select" aria-label="Default select example">
+    <select class="form-select" aria-label="Default select example" name="query">
       <option selected>Select Your Query</option>
       <option value="1">web</option>
       <option value="2">Tech</option>
@@ -35,12 +36,14 @@
 
     <div class="mb-3">
       <label for="exampleFormControlTextarea1" class="form-label">Tell us about Yourself</label>
-      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="message"></textarea>
     </div>
    
     <div class="mb-3">
       <label for="exampleFormControlTextarea2" class="form-label">Elaborate Your Concern</label>
-      <textarea class="form-control" id="exampleFormControlTextarea2" rows="3"></textarea>
+      <textarea class="form-control" id="exampleFormControlTextarea2" rows="3" name="concern"></textarea>
     </div>
-    <button type="button" class="btn btn-primary">submit</button>
+    <!-- <button type="button" class="btn btn-primary">submit</button> -->
+    <input type="submit" class="btn btn-primary"/>
+  </form>
  </div>
